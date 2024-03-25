@@ -62,7 +62,7 @@ class GameObject:
 class Apple(GameObject):
     """Класс Apple представляет яблоко, которое может быть съедено змеей."""
 
-    def __init__(self, occupied_cells):
+    def __init__(self, occupied_cells=()):
         """Инициализирует объект яблока с начальными параметрами."""
         super().__init__(APPLE_COLOR)
         self.position = None
