@@ -56,7 +56,7 @@ class GameObject:
 
     def draw(self):
         """Заготовка для метода отрисовывающего класс"""
-        raise NotImplementedError("Метод draw должен быть переопределен в дочернем классе")
+        raise NotImplementedError("Метод draw переопределен в дочернем классе")
 
 
 class Apple(GameObject):
@@ -169,18 +169,20 @@ def handle_keys(snake, events):
 
 
 def check_apple_eaten(snake_position, apple_position):
+    """Проверяет съела ли змея яблоко"""
     return snake_position == apple_position
 
 
 def check_self_collision(snake_positions):
+    """Проверяет врезалась ли змея в себя"""
     return len(snake_positions) != len(set(snake_positions))
 
 
 def main():
+    """Основная функция содержащая игровую логику"""
     # Инициализация PyGame:
     pg.init()
 
-    """Основная функция содержащая игровую логику"""
     snake = Snake()
     occupied_cells = snake.get_occupied_cells()
     apple = Apple(occupied_cells)
