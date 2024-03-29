@@ -186,11 +186,11 @@ def main():
             snake.length += 1
             apple.randomize_position(snake.positions)
 
-        if snake.positions[0] in snake.positions[5:]:
+        if snake.get_head_position() in snake.positions[4:]:
             snake.reset()
-            screen.fill(BOARD_BACKGROUND_COLOR)
             apple.randomize_position(snake.positions)
 
+        screen.fill(BOARD_BACKGROUND_COLOR)
         snake.draw()
         apple.draw()
 
