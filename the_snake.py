@@ -97,7 +97,7 @@ class Snake(GameObject):
     def move(self):
         """Перемещает змею на один шаг в заданном направлении."""
         differ_x, differ_y = self.direction
-        head_x, head_y = Snake.get_head_position(self)
+        head_x, head_y = self.get_head_position()
         new_head = ((head_x + differ_x * GRID_SIZE) % SCREEN_WIDTH,
                     (head_y + differ_y * GRID_SIZE) % SCREEN_HEIGHT)
 
@@ -178,17 +178,17 @@ def main():
             elif event.type == pg.KEYDOWN:
                 handle_keys(snake, [event])
 
+        snake.move()
+
         snake.update_direction()
-        screen.fill(BOARD_BACKGROUND_COLOR)
 
         if snake.get_head_position() == apple.position:
             snake.length += 1
             apple.randomize_position(snake.positions)
 
-        snake.move()
-
-        if len(snake.positions) != len(set(snake.positions)):
+        if snake.positions[0] in snake.positions[5:]:
             snake.reset()
+            screen.fill(BOARD_BACKGROUND_COLOR)
             apple.randomize_position(snake.positions)
 
         snake.draw()
